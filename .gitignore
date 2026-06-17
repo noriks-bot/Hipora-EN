@@ -7,3 +7,5 @@
 !/wp-content/themes/
 !/wp-content/plugins/
 !/wp-content/languages/
+*.bak-*
+*.bak2-*
