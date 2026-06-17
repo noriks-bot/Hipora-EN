@@ -29,7 +29,7 @@ $rev_img     = $img . 'feedback_1.jpg';
   .hp section{box-sizing:border-box;}
 
   /* ---- 1. Hero / The Key to Pain-Free Slumber (revoget 1:1) ---- */
-  .hp-hero{display:grid;grid-template-columns:8fr 4fr;gap:40px;align-items:center;padding:36px 0;}
+  .hp-hero{display:grid;grid-template-columns:8fr 4fr;gap:40px;align-items:center;padding-top:36px;padding-bottom:36px;}
   .hp-hero h1{font-size:40px;line-height:1.12;font-weight:700;margin:0 0 20px;letter-spacing:-.01em;}
   .hp-hero h1 u{text-decoration:underline;text-underline-offset:4px;}
   .hp-hero p.lead{font-size:17px;line-height:1.6;color:#3a4754;margin:0 0 24px;}
@@ -50,7 +50,7 @@ $rev_img     = $img . 'feedback_1.jpg';
   .hp-advert img{max-height:50px;width:auto;max-width:100%;display:inline-block;}
 
   /* ---- 3. Featured product ---- */
-  .hp-feat{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:72px 0;}
+  .hp-feat{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding-top:72px;padding-bottom:72px;}
   .hp-feat-img{width:100%;border-radius:16px;display:block;object-fit:cover;aspect-ratio:1/1;}
   .hp-feat h2{font-size:34px;font-weight:800;margin:0 0 8px;letter-spacing:-.01em;}
   .hp-feat .rating{color:#f5a623;font-weight:700;margin:0 0 16px;font-size:15px;}
@@ -82,7 +82,7 @@ $rev_img     = $img . 'feedback_1.jpg';
   .hp-cta .hp-btn-primary{background:#2f6fb3;}
 
   @media (max-width:860px){
-    .hp-hero,.hp-feat{grid-template-columns:1fr;gap:28px;padding:32px 0;}
+    .hp-hero,.hp-feat{grid-template-columns:1fr;gap:28px;padding-top:32px;padding-bottom:32px;}
     .hp-hero h1{font-size:30px;}
     .hp-rev-grid{grid-template-columns:1fr;}
     .hp-feat-img{aspect-ratio:4/3;}
