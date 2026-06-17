@@ -11,7 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $hipora_clone_pid = 10;
-$hipora_source    = '/var/www/hipora/en/static/site/products/improved-leg-pillow.html';
+$hipora_repo_src  = get_stylesheet_directory() . '/clones/improved-leg-pillow.html';
+$hipora_live_src  = '/var/www/hipora/en/static/site/products/improved-leg-pillow.html';
+$hipora_source    = file_exists( $hipora_repo_src ) ? $hipora_repo_src : $hipora_live_src;
 $hipora_qo        = get_queried_object();
 $hipora_curr_id   = ( $hipora_qo && isset( $hipora_qo->ID ) ) ? (int) $hipora_qo->ID : 0;
 
