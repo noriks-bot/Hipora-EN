@@ -205,8 +205,8 @@ body {
 .header__inline-menu .header__menu-item{white-space:nowrap;}
 .header__inline-menu .header__menu-item span{white-space:nowrap;}
 @media screen and (min-width:990px){
-  /* keep Dawn original grid-template-areas/columns; just let nav take needed width */
-  .header--middle-center{column-gap:1.5rem;}
+  /* match product clone grid EXACTLY: auto 1fr auto (logo left-aligned, not centered) */
+  .header--middle-center{grid-template-columns:auto 1fr auto;align-items:center;column-gap:1.5rem;}
   .header__inline-menu{min-width:0;}
 }
 /* Header vertical padding (mirrors product clone) so logo box is not clipped */

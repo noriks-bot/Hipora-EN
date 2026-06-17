@@ -162,13 +162,6 @@ $rev_img     = $img . 'feedback_1.jpg';
     </div>
   </section>
 
-  <!-- FINAL CTA -->
-  <section class="hp-cta">
-    <h2>Don&rsquo;t let back pain control your nights.</h2>
-    <p>Join 80,000+ sleepers who wake up pain-free.</p>
-    <a href="<?php echo esc_url( $product_url ); ?>" class="hp-btn hp-btn-primary">Transform Your Sleep</a>
-  </section>
-
 </div>
 
 <?php
