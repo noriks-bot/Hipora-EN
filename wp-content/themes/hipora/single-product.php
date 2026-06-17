@@ -86,10 +86,32 @@ if ( $hipora_curr_id === $hipora_clone_pid && file_exists( $hipora_source ) ) {
         fetch("/?wc-ajax=add_to_cart", {
           method: "POST",
           credentials: "include",
-          headers: {"Content-Type": "application/x-www-form-urlencoded"},
+          headers: {"Content-Type": "application/x-www-form-urlencoded", "X-Requested-With": "XMLHttpRequest"},
           body: body.toString()
-        }).then(function(r){return r.text();})
-          .then(function(){ window.location.href = CART; })
+        }).then(function(r){return r.json();})
+          .then(function(resp){
+            try { b.innerHTML = orig; b.disabled = false; } catch(_){}
+            if (resp && resp.error && resp.product_url) { window.location.href = resp.product_url; return; }
+            // Notify WooCommerce + Side Cart plugin so the side cart refreshes & auto-opens.
+            if (window.jQuery) {
+              var $b = window.jQuery(b);
+              var frags = (resp && resp.fragments) || {};
+              var hash = (resp && resp.cart_hash) || "";
+              // Refresh WooCommerce cart fragments (updates side cart count/contents).
+              window.jQuery(document.body).trigger("wc_fragments_refreshed");
+              window.jQuery(document.body).trigger("added_to_cart", [ frags, hash, $b ]);
+              // Side Cart plugin binds open on .xoo-wsc-cart-trigger click AND on a buggy
+              // added_to_cart event with a trailing space, so trigger BOTH for reliability.
+              window.jQuery(document.body).trigger("added_to_cart ", [ frags, hash, $b ]);
+              setTimeout(function(){
+                var trigger = document.querySelector(".xoo-wsc-cart-trigger");
+                if (trigger) { trigger.click(); }
+                else { window.jQuery(document.body).trigger("wc_fragment_refresh"); }
+              }, 120);
+            } else {
+              window.location.href = CART;
+            }
+          })
           .catch(function(){ window.location.href = "/?add-to-cart=" + PID + "&quantity=" + qty; });
       }, true);
     });
@@ -180,7 +202,27 @@ if ( $hipora_curr_id === $hipora_clone_pid && file_exists( $hipora_source ) ) {
   else { init(); }
 })();</script>';
 
-    $html = preg_replace( "#</body>#i", $wc_handler . "</body>", $html, 1 );
+    // === Side Cart (XootiX) integration on the cloned product page ===
+    // The clone HTML is echoed raw (no get_header/get_footer), so we must
+    // explicitly enqueue + print the side cart assets and render its markup.
+    do_action( 'wp_enqueue_scripts' );
+
+    // 1) Styles -> inject before </head>
+    ob_start();
+    wp_print_styles();
+    $hipora_styles = ob_get_clean();
+    if ( $hipora_styles ) {
+        $html = preg_replace( "#</head>#i", $hipora_styles . "</head>", $html, 1 );
+    }
+
+    // 2) Side cart markup (modal/drawer) via shortcode + footer scripts (jQuery, cart fragments, main JS)
+    ob_start();
+    echo do_shortcode( '[xoo_wsc_cart]' );
+    do_action( 'wp_footer' );          // lets the plugin print its markup-notice + footer hooks
+    wp_print_footer_scripts();         // force-print enqueued in_footer scripts + localized params
+    $hipora_footer = ob_get_clean();
+
+    $html = preg_replace( "#</body>#i", $wc_handler . $hipora_footer . "</body>", $html, 1 );
     // === END BORIS PATCH ===
 
     header( 'Content-Type: text/html; charset=UTF-8' );
