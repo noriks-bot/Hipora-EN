@@ -245,7 +245,7 @@
                           </a></li><li><a href="/shop/" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">
                             Shop
                           </a></li><li><a href="/product/hipora-alignment-pillow/" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">
-                            Product
+                            Hipora™️ Alignment Pillow
                           </a></li></ul>
                 </nav>
 <!--                 start secondary nav -->
@@ -281,7 +281,7 @@ Log in</a><ul class="list list-social list-unstyled" role="list"><li class="list
                 </a></li><li><a href="/shop/" class="header__menu-item header__menu-item--main list-menu__item link link--text focus-inset">
                   <span>Shop</span>
                 </a></li><li><a href="/product/hipora-alignment-pillow/" class="header__menu-item header__menu-item--main list-menu__item link link--text focus-inset">
-                  <span>Product</span>
+                  <span>Hipora™️ Alignment Pillow</span>
                 </a></li></ul>
       </nav><a 
             href="/" 
