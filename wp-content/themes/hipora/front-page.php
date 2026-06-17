@@ -29,6 +29,7 @@ $rev_img     = $img . 'feedback_1.jpg';
   .hp section{box-sizing:border-box;}
 
   /* ---- 1. Hero / The Key to Pain-Free Slumber (revoget 1:1) ---- */
+  .hp-hero-bg{background:#dfe2f2;}
   .hp-hero{display:grid;grid-template-columns:8fr 4fr;gap:40px;align-items:center;padding-top:36px;padding-bottom:36px;}
   .hp-hero h1{font-size:40px;line-height:1.12;font-weight:700;margin:0 0 20px;letter-spacing:-.01em;}
   .hp-hero h1 u{text-decoration:underline;text-underline-offset:4px;}
@@ -92,6 +93,7 @@ $rev_img     = $img . 'feedback_1.jpg';
 <div class="hp">
 
   <!-- 1. HERO (revoget 1:1) -->
+  <div class="hp-hero-bg">
   <section class="hp-hero hp-wrap">
     <div>
       <h1><u>The Key to Pain-Free Slumber</u></h1>
@@ -109,6 +111,7 @@ $rev_img     = $img . 'feedback_1.jpg';
       <img class="hp-hero-img" src="<?php echo esc_attr( $hero_img ); ?>" alt="Hipora Alignment Pillow" loading="eager">
     </div>
   </section>
+  </div>
 
   <!-- 2. AS ADVERTISED ON (revoget logo_list) -->
   <section class="hp-advert">
