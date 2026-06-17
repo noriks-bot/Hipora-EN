@@ -218,6 +218,8 @@ body {
 .header__heading-link.media.ratio{align-items:center;}
 /* Footer: ensure clone footer spacing matches product page on all templates */
 .footer{margin-top:0;}
+/* Header container: force same box model + centering as product page (border-box, max 1400, centered) */
+.header.page-width{box-sizing:border-box !important;width:100% !important;max-width:1400px !important;margin-left:auto !important;margin-right:auto !important;}
 </style>
 </head>
 
