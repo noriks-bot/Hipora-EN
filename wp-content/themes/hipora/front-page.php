@@ -64,6 +64,10 @@ $rev_img     = $img . 'feedback_1.jpg';
   .hp-price .now{font-size:30px;font-weight:800;}
   .hp-price .was{font-size:18px;color:#9aa8b6;text-decoration:line-through;}
   .hp-price .save{background:#e9f1fa;color:#2f6fb3;font-size:13px;font-weight:700;padding:5px 12px;border-radius:999px;}
+  .hp-feat-trust{display:flex;gap:28px;margin:26px 0 0;flex-wrap:wrap;}
+  .hp-feat-trust .it{display:flex;flex-direction:column;align-items:center;text-align:center;flex:1 1 110px;max-width:150px;}
+  .hp-feat-trust .ic{font-size:24px;color:#2f6fb3;}
+  .hp-feat-trust .lb{font-size:12.5px;font-weight:600;color:#37475a;margin-top:6px;line-height:1.3;}
 
   /* ---- 4. Reviews ---- */
   .hp-rev{padding:72px 0;text-align:center;}
@@ -140,6 +144,11 @@ $rev_img     = $img . 'feedback_1.jpg';
         <span class="save">SAVE 50%</span>
       </div>
       <a href="<?php echo esc_url( $product_url ); ?>" class="hp-btn hp-btn-primary">Shop Now</a>
+      <div class="hp-feat-trust">
+        <div class="it"><span class="ic">&#9786;</span><span class="lb">80,000+ Happy Sleepers</span></div>
+        <div class="it"><span class="ic">&#127769;</span><span class="lb">60-Night Risk-Free Trial</span></div>
+        <div class="it"><span class="ic">&#128666;</span><span class="lb">Free Worldwide Shipping</span></div>
+      </div>
     </div>
   </section>
 
