@@ -20,7 +20,8 @@ $rev_img     = $img . 'feedback_1.jpg';
 
 <style>
   .hp{font-family:'Montserrat','Inter',system-ui,-apple-system,sans-serif;color:#16202b;}
-  .hp-wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+  .hp-wrap{max-width:1400px;margin:0 auto;padding:0 50px;}
+  @media (max-width:749px){.hp-wrap{padding:0 15px;}}
   .hp section{box-sizing:border-box;}
 
   /* ---- 1. Hero / The Key to Pain-Free Slumber ---- */
