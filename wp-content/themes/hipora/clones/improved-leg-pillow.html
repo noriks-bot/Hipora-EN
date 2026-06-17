@@ -1282,6 +1282,15 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 .header__heading-link.media.ratio{align-items:center;}
 .footer{margin-top:0;}
 </style>
+<style id="boris-bundle-override">
+/* boris: odstrani obrobe okoli izbir v bundle baru */
+.kaching-bundles__bar{border-color:transparent !important;}
+.kaching-bundles__bar:has(input:checked){border-color:transparent !important;border-width:2px !important;}
+.kaching-bundles__bar-variant-select,
+.kaching-bundles__bar-variants select{border:none !important;}
+.kaching-bundles__bar-variant-image,
+img.kaching-bundles__bar-variant-image{border:none !important;}
+</style>
 </head>
 
   <body class="gradient link-btns--arrow action-btns--center">
