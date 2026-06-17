@@ -19,7 +19,10 @@
 <link rel="stylesheet" href="/static/site/cdn/shop/t/2/assets/component-predictive-search.css%3Fv=76514217051199997821706540610.css" media="all">
 <link rel="stylesheet" href="/static/site/cdn/shop/t/2/assets/component-card.css%3Fv=97748468422666499891706540609.css" media="all">
 <script src="/static/site/cdn/shop/t/2/assets/secondary.js%3Fv=70897601511734191871706540610" defer="defer"></script>
+<?php /* boris: shrine-main.js carries a license check that hijacks the checkout page; skip it on cart/checkout */
+if ( ! ( ( function_exists( 'is_cart' ) && is_cart() ) || ( function_exists( 'is_checkout' ) && is_checkout() ) ) ) : ?>
 <script src="/static/site/ext/shrine-main.js" defer="defer"></script>
+<?php endif; ?>
 
 <?php wp_head(); ?>
 <style id="boris-theme-tokens">

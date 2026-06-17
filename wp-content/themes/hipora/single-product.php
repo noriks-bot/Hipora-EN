@@ -59,7 +59,27 @@ if ( $hipora_curr_id === $hipora_clone_pid && file_exists( $hipora_source ) ) {
     $wc_cart_url   = function_exists( 'wc_get_checkout_url' ) ? wc_get_checkout_url() : '/checkout/';
     $wc_handler = '<script>(function(){
   var PID = ' . intval( $wc_product_id ) . ';
-  var CART = ' . wp_json_encode( $wc_cart_url ) . ';
+  function getQty(){
+    var qtyEl = document.querySelector("input[name=quantity],input.qty,[data-quantity]");
+    return qtyEl ? (parseInt(qtyEl.value,10)||1) : 1;
+  }
+  // Hidden native WooCommerce AJAX add-to-cart trigger. WC core add-to-cart.js
+  // handles the AJAX request and fires added_to_cart; the side cart plugin then
+  // auto-opens on its own (same path as shop/archive pages).
+  function ensureWcBtn(){
+    var a = document.getElementById("hipora-wc-atc");
+    if (!a){
+      a = document.createElement("a");
+      a.id = "hipora-wc-atc";
+      a.href = "?add-to-cart=" + PID;
+      a.className = "add_to_cart_button ajax_add_to_cart";
+      a.setAttribute("data-product_id", PID);
+      a.setAttribute("data-quantity", "1");
+      a.style.display = "none";
+      document.body.appendChild(a);
+    }
+    return a;
+  }
   function bind(){
     var selectors = [
       "button[name=\"add\"]","button.add-to-cart","button[data-add-to-cart]",
@@ -76,49 +96,21 @@ if ( $hipora_curr_id === $hipora_clone_pid && file_exists( $hipora_source ) ) {
       b.dataset.wcBound = "1";
       b.addEventListener("click", function(e){
         e.preventDefault(); e.stopPropagation();
-        var qtyEl = document.querySelector("input[name=quantity],input.qty,[data-quantity]");
-        var qty = qtyEl ? (parseInt(qtyEl.value,10)||1) : 1;
-        var orig = b.innerHTML;
-        try { b.innerHTML = "Adding\u2026"; b.disabled = true; } catch(_){}
-        var body = new URLSearchParams();
-        body.append("product_id", PID);
-        body.append("quantity", qty);
-        fetch("/?wc-ajax=add_to_cart", {
-          method: "POST",
-          credentials: "include",
-          headers: {"Content-Type": "application/x-www-form-urlencoded", "X-Requested-With": "XMLHttpRequest"},
-          body: body.toString()
-        }).then(function(r){return r.json();})
-          .then(function(resp){
-            try { b.innerHTML = orig; b.disabled = false; } catch(_){}
-            if (resp && resp.error && resp.product_url) { window.location.href = resp.product_url; return; }
-            // Notify WooCommerce + Side Cart plugin so the side cart refreshes & auto-opens.
-            if (window.jQuery) {
-              var $b = window.jQuery(b);
-              var frags = (resp && resp.fragments) || {};
-              var hash = (resp && resp.cart_hash) || "";
-              // Refresh WooCommerce cart fragments (updates side cart count/contents).
-              window.jQuery(document.body).trigger("wc_fragments_refreshed");
-              window.jQuery(document.body).trigger("added_to_cart", [ frags, hash, $b ]);
-              // Side Cart plugin binds open on .xoo-wsc-cart-trigger click AND on a buggy
-              // added_to_cart event with a trailing space, so trigger BOTH for reliability.
-              window.jQuery(document.body).trigger("added_to_cart ", [ frags, hash, $b ]);
-              setTimeout(function(){
-                var trigger = document.querySelector(".xoo-wsc-cart-trigger");
-                if (trigger) { trigger.click(); }
-                else { window.jQuery(document.body).trigger("wc_fragment_refresh"); }
-              }, 120);
-            } else {
-              window.location.href = CART;
-            }
-          })
-          .catch(function(){ window.location.href = "/?add-to-cart=" + PID + "&quantity=" + qty; });
+        var a = ensureWcBtn();
+        a.setAttribute("data-quantity", String(getQty()));
+        // If WC ajax not ready yet, fall back to a plain add-to-cart URL.
+        if (!window.jQuery || typeof window.wc_add_to_cart_params === "undefined"){
+          window.location.href = "/?add-to-cart=" + PID + "&quantity=" + getQty();
+          return;
+        }
+        a.click();
       }, true);
     });
   }
+  function init(){ ensureWcBtn(); bind(); }
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", bind);
-  } else { bind(); }
+    document.addEventListener("DOMContentLoaded", init);
+  } else { init(); }
   setTimeout(bind, 1500); setTimeout(bind, 3500);
 })();</script>';
 
