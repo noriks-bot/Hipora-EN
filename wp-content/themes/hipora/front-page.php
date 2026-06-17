@@ -15,6 +15,8 @@ $shop_url    = home_url( '/shop/' );
 $img         = '/static/site/cdn/shop/files/';
 $hero_img    = $img . 'home-mine.png%3Fv=1713833230&width=1500';
 $pay_img     = $img . 'Anadir_un_titulo_2_23fc34aa-b8b8-4cef-9664-b782ba3013b1.png%3Fv=1709037417&width=1100';
+$advert_img  = $img . 'Anadir_un_titulo_3.png%3Fv=1709037748';
+$feat_img    = $img . '1st80.jpg%3Fv=1761050181&width=1100';
 $avatar_img  = $img . 'homeReview.png%3Fv=1711118659';
 $life_img    = $img . 'kathy_2.jpg';
 $rev_img     = $img . 'feedback_1.jpg';
@@ -43,12 +45,9 @@ $rev_img     = $img . 'feedback_1.jpg';
   .hp-hero-img{width:100%;display:block;height:auto;}
 
   /* ---- 2. Trust badges ---- */
-  .hp-trust{background:#f4f8fd;padding:28px 0;}
-  .hp-trust-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:38px;text-align:center;}
-  .hp-trust-item{flex:1 1 200px;max-width:260px;}
-  .hp-trust-item .ico{font-size:26px;}
-  .hp-trust-item .t{font-weight:700;font-size:15px;margin:8px 0 2px;}
-  .hp-trust-item .s{font-size:13px;color:#5a6b7c;}
+  /* ---- 2. AS ADVERTISED ON (logo_list) ---- */
+  .hp-advert{padding:8px 0;text-align:center;}
+  .hp-advert img{max-height:50px;width:auto;max-width:100%;display:inline-block;}
 
   /* ---- 3. Featured product ---- */
   .hp-feat{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:72px 0;}
@@ -111,20 +110,17 @@ $rev_img     = $img . 'feedback_1.jpg';
     </div>
   </section>
 
-  <!-- 2. TRUST BADGES -->
-  <section class="hp-trust">
-    <div class="hp-trust-grid hp-wrap">
-      <div class="hp-trust-item"><div class="ico">&#128666;</div><div class="t">Free Shipping</div><div class="s">On orders over &euro;70</div></div>
-      <div class="hp-trust-item"><div class="ico">&#8617;&#65039;</div><div class="t">30-Day Risk-Free</div><div class="s">Money-back guarantee</div></div>
-      <div class="hp-trust-item"><div class="ico">&#11088;</div><div class="t">4.8/5 Rating</div><div class="s">12,000+ happy sleepers</div></div>
-      <div class="hp-trust-item"><div class="ico">&#128274;</div><div class="t">Secure Payment</div><div class="s">SSL encrypted checkout</div></div>
+  <!-- 2. AS ADVERTISED ON (revoget logo_list) -->
+  <section class="hp-advert">
+    <div class="hp-wrap">
+      <img src="<?php echo esc_attr( $advert_img ); ?>" alt="As advertised on Yahoo, GQ, Health, AOL, MSN" loading="lazy">
     </div>
   </section>
 
   <!-- 3. FEATURED PRODUCT -->
   <section class="hp-feat hp-wrap">
     <div>
-      <img class="hp-feat-img" src="<?php echo esc_attr( $life_img ); ?>" alt="Hipora Alignment Pillow in use" loading="lazy">
+      <img class="hp-feat-img" src="<?php echo esc_attr( $feat_img ); ?>" alt="Hipora Alignment Pillow" loading="lazy">
     </div>
     <div>
       <h2>Hipora&trade;&#65039; Alignment Pillow</h2>
