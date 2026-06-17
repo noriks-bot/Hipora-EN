@@ -13,7 +13,9 @@ get_header();
 $product_url = home_url( '/product/hipora-alignment-pillow/' );
 $shop_url    = home_url( '/shop/' );
 $img         = '/static/site/cdn/shop/files/';
-$hero_img    = $img . '1.jpg%3Fv=1742559560&width=1100';
+$hero_img    = $img . 'home-mine.png%3Fv=1713833230&width=1500';
+$pay_img     = $img . 'Anadir_un_titulo_2_23fc34aa-b8b8-4cef-9664-b782ba3013b1.png%3Fv=1709037417&width=1100';
+$avatar_img  = $img . 'homeReview.png%3Fv=1711118659';
 $life_img    = $img . 'kathy_2.jpg';
 $rev_img     = $img . 'feedback_1.jpg';
 ?>
@@ -24,18 +26,21 @@ $rev_img     = $img . 'feedback_1.jpg';
   @media (max-width:749px){.hp-wrap{padding:0 15px;}}
   .hp section{box-sizing:border-box;}
 
-  /* ---- 1. Hero / The Key to Pain-Free Slumber ---- */
-  .hp-hero{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:64px 0;}
-  .hp-hero-eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#2f6fb3;margin:0 0 16px;}
-  .hp-hero h1{font-size:46px;line-height:1.08;font-weight:800;margin:0 0 20px;letter-spacing:-.02em;}
-  .hp-hero p.lead{font-size:18px;line-height:1.65;color:#46586b;margin:0 0 26px;}
-  .hp-quote{border-left:3px solid #2f6fb3;padding:10px 0 10px 18px;margin:0 0 28px;font-style:italic;color:#37475a;font-size:15px;line-height:1.6;}
-  .hp-quote .who{display:block;margin-top:8px;font-style:normal;font-weight:700;color:#16202b;}
-  .hp-stars{color:#f5a623;letter-spacing:2px;}
-  .hp-btn{display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;padding:16px 34px;border-radius:8px;text-decoration:none;transition:.15s;}
-  .hp-btn-primary{background:#2f6fb3;color:#fff;}
-  .hp-btn-primary:hover{background:#27598f;}
-  .hp-hero-img{width:100%;border-radius:16px;display:block;object-fit:cover;aspect-ratio:1/1;box-shadow:0 18px 40px rgba(20,40,70,.12);}
+  /* ---- 1. Hero / The Key to Pain-Free Slumber (revoget 1:1) ---- */
+  .hp-hero{display:grid;grid-template-columns:8fr 4fr;gap:40px;align-items:center;padding:36px 0;}
+  .hp-hero h1{font-size:40px;line-height:1.12;font-weight:700;margin:0 0 20px;letter-spacing:-.01em;}
+  .hp-hero h1 u{text-decoration:underline;text-underline-offset:4px;}
+  .hp-hero p.lead{font-size:17px;line-height:1.6;color:#3a4754;margin:0 0 24px;}
+  .hp-btn{display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:16px;padding:15px 34px;border-radius:6px;text-decoration:none;transition:.15s;}
+  .hp-btn-primary{background:#121212;color:#fff;}
+  .hp-btn-primary:hover{opacity:.85;}
+  .hp-pay{margin:22px 0 26px;}
+  .hp-pay img{max-width:340px;width:100%;height:auto;display:block;}
+  .hp-review{display:flex;gap:14px;align-items:flex-start;background:#f3f3f3;border-radius:8px;padding:16px 18px;}
+  .hp-review img{width:64px;height:64px;border-radius:50%;object-fit:cover;flex:0 0 auto;}
+  .hp-review p{margin:0;font-size:13.5px;line-height:1.55;color:#121212;}
+  .hp-review .stars{color:#f5a623;letter-spacing:1px;}
+  .hp-hero-img{width:100%;display:block;height:auto;}
 
   /* ---- 2. Trust badges ---- */
   .hp-trust{background:#f4f8fd;padding:28px 0;}
@@ -78,26 +83,28 @@ $rev_img     = $img . 'feedback_1.jpg';
   .hp-cta .hp-btn-primary{background:#2f6fb3;}
 
   @media (max-width:860px){
-    .hp-hero,.hp-feat{grid-template-columns:1fr;gap:32px;padding:44px 0;}
-    .hp-hero h1{font-size:34px;}
+    .hp-hero,.hp-feat{grid-template-columns:1fr;gap:28px;padding:32px 0;}
+    .hp-hero h1{font-size:30px;}
     .hp-rev-grid{grid-template-columns:1fr;}
-    .hp-hero-img,.hp-feat-img{aspect-ratio:4/3;}
+    .hp-feat-img{aspect-ratio:4/3;}
   }
 </style>
 
 <div class="hp">
 
-  <!-- 1. HERO -->
+  <!-- 1. HERO (revoget 1:1) -->
   <section class="hp-hero hp-wrap">
     <div>
-      <span class="hp-hero-eyebrow">The Key to Pain-Free Slumber</span>
-      <h1>Wake up without back &amp; hip pain.</h1>
-      <p class="lead">The Hipora&trade;&#65039; Alignment Pillow is your gateway to uninterrupted sleep and serene mornings. Let rest be the luxury you afford yourself every night.</p>
-      <blockquote class="hp-quote">
-        &ldquo;Sciatica made it impossible to find a comfortable sleeping position. After just a few nights with this pillow, my pain dropped noticeably. I now sleep soundly through the night.&rdquo;
-        <span class="who">&mdash; Sarah J. <span class="hp-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></span>
-      </blockquote>
+      <h1><u>The Key to Pain-Free Slumber</u></h1>
+      <p class="lead">Our Alignment Pillow is your gateway to uninterrupted slumber and serene mornings. Let rest be the luxury you afford yourself every night.</p>
       <a href="<?php echo esc_url( $product_url ); ?>" class="hp-btn hp-btn-primary">Transform Your Sleep</a>
+      <div class="hp-pay">
+        <img src="<?php echo esc_attr( $pay_img ); ?>" alt="Accepted payment methods" loading="lazy">
+      </div>
+      <div class="hp-review">
+        <img src="<?php echo esc_attr( $avatar_img ); ?>" alt="Sarah J." loading="lazy">
+        <p>&ldquo;Sciatica was making it impossible for me to find a comfortable sleeping position, and daily tasks such as walking or sitting were excruciating. However, after just a few nights of using this pillow, I experienced a <strong>noticeable decrease in pain</strong>. I&rsquo;m now able to <strong>sleep soundly throughout the night and go about my day</strong> without enduring constant pain.&rdquo; &ndash; Sarah J. <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></p>
+      </div>
     </div>
     <div>
       <img class="hp-hero-img" src="<?php echo esc_attr( $hero_img ); ?>" alt="Hipora Alignment Pillow" loading="eager">
