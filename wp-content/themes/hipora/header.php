@@ -22,6 +22,20 @@
 <script src="/static/site/ext/shrine-main.js" defer="defer"></script>
 
 <?php wp_head(); ?>
+<style id="boris-header-fix">
+/* Keep header layout identical to product page regardless of menu label length */
+.header__inline-menu .list-menu--inline{flex-wrap:nowrap;}
+.header__inline-menu .header__menu-item{white-space:nowrap;}
+.header__inline-menu .header__menu-item span{white-space:nowrap;}
+@media screen and (min-width:990px){
+  .header--middle-center{
+    grid-template-columns:auto 1fr auto;
+    align-items:center;
+  }
+}
+/* Footer: ensure clone footer spacing matches product page on all templates */
+.footer{margin-top:0;}
+</style>
 </head>
 
 <body <?php body_class( 'gradient' ); ?>>
